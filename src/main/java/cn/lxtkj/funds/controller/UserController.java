@@ -1,6 +1,8 @@
 package cn.lxtkj.funds.controller;
 
 
+import cn.lxtkj.funds.common.lang.Result;
+import cn.lxtkj.funds.entity.User;
 import cn.lxtkj.funds.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +25,9 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/index")
-    public Object index(){
-        return userService.getById(1L);
+    public Result index(){
+        User user = userService.getById(1L);
+        return Result.succ(user);
     }
 
 }
